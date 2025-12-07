@@ -61,19 +61,19 @@ WebDriver driver;
         this.driver = driver;
     }
 
-    public void insertName(){
-        driver.findElement(nameInput).sendKeys("Игорь");
+    public void insertName(String name){
+        driver.findElement(nameInput).sendKeys(name);
     }
-    public void insertSecondName(){
-        driver.findElement(secondNameInput).sendKeys("Иванов");
-    }
-
-    public void insertAdress(){
-        driver.findElement(adress).sendKeys("Москва");
+    public void insertSecondName(String secondName){
+        driver.findElement(secondNameInput).sendKeys(secondName);
     }
 
-    public void insertMetroStation(){
-        driver.findElement(metroStation).sendKeys("Бабушкинская");
+    public void insertAdress(String adressStr){
+        driver.findElement(adress).sendKeys(adressStr);
+    }
+
+    public void insertMetroStation(String mertoLable){
+        driver.findElement(metroStation).sendKeys(mertoLable);
 
     }
     public void clickMetroStation(){
@@ -81,9 +81,9 @@ WebDriver driver;
 
     }
 
-    public void insertPhoneNumber(){
+    public void insertPhoneNumber(String phone){
         //driver.findElement(phoneNumber).click();
-        driver.findElement(phoneNumber).sendKeys("89993334455");
+        driver.findElement(phoneNumber).sendKeys(phone);
 
     }
 
@@ -126,13 +126,17 @@ WebDriver driver;
         return driver.findElement(orderUppr).getText();
     }
 
-public String getStatusFromOrderButton(){
-    insertName();
-    insertSecondName();
-    insertAdress();
-    insertMetroStation();
+public String getStatusFromOrderButton(String name,
+                                       String secondName,
+                                       String adress,
+                                       String metroLable,
+                                       String phone){
+    insertName(name);
+    insertSecondName(secondName);
+    insertAdress(adress);
+    insertMetroStation(metroLable);
     clickMetroStation();
-    insertPhoneNumber();
+    insertPhoneNumber(phone);
     clickNextButton();
     clickDate();
     insertDate();
